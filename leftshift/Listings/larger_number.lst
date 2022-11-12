@@ -1,0 +1,61 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000         Main
+    5 00000000 E3A01101        LDR              R1,=0x40000000
+    6 00000004 E5912000        LDR              R2,[R1]
+    7 00000008 E2811004        ADD              R1,R1,#0x4
+    8 0000000C E5913000        LDR              R3,[R1]
+    9 00000010 E1520003        CMP              R2,R3
+   10 00000014 8A000000        BHI              DONE
+   11 00000018 E1A02003        MOV              R2,R3
+   12 0000001C         
+   13 0000001C         DONE
+   14 0000001C E3A01131        LDR              R1,=0x4000000C
+   15 00000020 E5812000        STR              R2,[R1]
+   16 00000024         
+   17 00000024 E1A00000        NOP
+   18 00000028                 END
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
+bjects\larger_number.d -o.\objects\larger_number.o -IC:\Keil_v5\ARM\RV31\INC -I
+C:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\INC\Philips --predefine="__EVAL S
+ETA 1" --predefine="__UVISION_VERSION SETA 529" --list=.\listings\larger_number
+.lst larger_number.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DONE 0000001C
+
+Symbol: DONE
+   Definitions
+      At line 13 in file larger_number.s
+   Uses
+      At line 10 in file larger_number.s
+Comment: DONE used once
+Main 00000000
+
+Symbol: Main
+   Definitions
+      At line 4 in file larger_number.s
+   Uses
+      None
+Comment: Main unused
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file larger_number.s
+   Uses
+      None
+Comment: RESET unused
+3 symbols
+335 symbols in table

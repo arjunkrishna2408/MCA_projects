@@ -1,0 +1,83 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000         Main
+    5 00000000 E59F101C        LDR              R1, Value   ; loading the byte 
+                                                            value into R1
+    6 00000004 E59F201C        LDR              R2, Mask    ;
+    7 00000008 E1A03221        MOV              R3,R1, LSR #0x4
+    8 0000000C E1A03403        MOV              R3,R3, LSL #0x8
+    9 00000010 E0011002        AND              R1,R1,R2
+   10 00000014 E0811003        ADD              R1,R1,R3
+   11 00000018         
+   12 00000018 E59F400C        LDR              R4,Result
+   13 0000001C E5841000        STR              R1,[R4]
+   14 00000020         
+   15 00000020 E1A00000        NOP
+   16 00000024         
+   17 00000024 5F      Value   DCB              &5F
+   18 00000025 00 00 00        ALIGN
+   19 00000028 0F 00   Mask    DCW              &000F
+   20 0000002A 00 00           ALIGN
+   21 0000002C 40000000 
+                       Result  DCD              &40000000
+   22 00000030                 END
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
+bjects\disassembly.d -o.\objects\disassembly.o -IC:\Keil_v5\ARM\RV31\INC -IC:\K
+eil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\INC\Philips --predefine="__EVAL SETA 
+1" --predefine="__UVISION_VERSION SETA 529" --list=.\listings\disassembly.lst d
+isassembly.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Main 00000000
+
+Symbol: Main
+   Definitions
+      At line 4 in file disassembly.s
+   Uses
+      None
+Comment: Main unused
+Mask 00000028
+
+Symbol: Mask
+   Definitions
+      At line 19 in file disassembly.s
+   Uses
+      At line 6 in file disassembly.s
+Comment: Mask used once
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file disassembly.s
+   Uses
+      None
+Comment: RESET unused
+Result 0000002C
+
+Symbol: Result
+   Definitions
+      At line 21 in file disassembly.s
+   Uses
+      At line 12 in file disassembly.s
+Comment: Result used once
+Value 00000024
+
+Symbol: Value
+   Definitions
+      At line 17 in file disassembly.s
+   Uses
+      At line 5 in file disassembly.s
+Comment: Value used once
+5 symbols
+337 symbols in table

@@ -1,0 +1,130 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; Find the length of a CR terminated string
+    2 00000000         
+    3 00000000         ;TTL Ch6Ex1 - strlencr
+    4 00000000                 AREA             Program, CODE, READONLY
+    5 00000000                 ENTRY
+    6 00000000         
+    7 00000000         Main
+    8 00000000 E59F0030        LDR              R0, =Data1  ; Load the address 
+                                                            of the lookup table
+                                                            
+    9 00000004         
+   10 00000004 E0211001        EOR              R1, R1, R1  ; Clear R1 to store
+                                                             count
+   11 00000008         Loop
+   12 00000008 E4D02001        LDRB             R2, [R0], #1 ; Load the first b
+                                                            yte into R2
+   13 0000000C E352000D        CMP              R2, #CR     ; Is it the termina
+                                                            tor ?
+   14 00000010 0A000001        BEQ              Done        ; Yes => Stop loop
+   15 00000014 E2811001        ADD              R1, R1, #1  ; No => Increment c
+                                                            ount
+   16 00000018 EAFFFFFA        BAL              Loop        ; Read next char
+   17 0000001C         
+   18 0000001C         Done
+   19 0000001C         ;STR R1, CharCount ; Store result
+   20 0000001C E59F0010        LDR              R0,CharCount
+   21 00000020 E5801000        STR              R1,[R0]
+   22 00000024         
+   23 00000024         ;AREA Data1, DATA
+   24 00000024         
+   25 00000024                 ALIGN
+   26 00000024 48 65 6C 
+              6C 6F 2C 
+              20 57 6F 
+              72 6C 64 
+              0D       Data1   DCB              "Hello, World", CR
+   27 00000031 00 00 00        ALIGN
+   28 00000034         
+   29 00000034         ;AREA Result, DATA
+   30 00000034 40000000 
+                       CharCount
+                               DCD              &40000000   ; Storage for count
+                                                            
+   31 00000038 0000000D 
+                       CR      EQU              0x0D
+   32 00000038                 END
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
+bjects\carage_length.d -o.\objects\carage_length.o -IC:\Keil_v5\ARM\RV31\INC -I
+C:\Keil_v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\INC\Philips --predefine="__EVAL S
+ETA 1" --predefine="__UVISION_VERSION SETA 529" --list=.\listings\carage_length
+.lst carage_length.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+CharCount 00000034
+
+Symbol: CharCount
+   Definitions
+      At line 30 in file carage_length.s
+   Uses
+      At line 20 in file carage_length.s
+Comment: CharCount used once
+Data1 00000024
+
+Symbol: Data1
+   Definitions
+      At line 26 in file carage_length.s
+   Uses
+      At line 8 in file carage_length.s
+Comment: Data1 used once
+Done 0000001C
+
+Symbol: Done
+   Definitions
+      At line 18 in file carage_length.s
+   Uses
+      At line 14 in file carage_length.s
+Comment: Done used once
+Loop 00000008
+
+Symbol: Loop
+   Definitions
+      At line 11 in file carage_length.s
+   Uses
+      At line 16 in file carage_length.s
+Comment: Loop used once
+Main 00000000
+
+Symbol: Main
+   Definitions
+      At line 7 in file carage_length.s
+   Uses
+      None
+Comment: Main unused
+Program 00000000
+
+Symbol: Program
+   Definitions
+      At line 4 in file carage_length.s
+   Uses
+      None
+Comment: Program unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+CR 0000000D
+
+Symbol: CR
+   Definitions
+      At line 31 in file carage_length.s
+   Uses
+      At line 13 in file carage_length.s
+      At line 26 in file carage_length.s
+
+1 symbol
+341 symbols in table

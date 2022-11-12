@@ -1,0 +1,68 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;Shift left one bit
+    2 00000000         
+    3 00000000                 AREA             program, CODE, READONLY
+    4 00000000                 ENTRY
+    5 00000000         
+    6 00000000         MAIN
+    7 00000000 E59F1008        LDR              R1,value
+    8 00000004 E1A01081        MOV              R1, R1, LSL #0x1
+    9 00000008 E59F0004        LDR              R0,result
+   10 0000000C E5801000        STR              R1,[R0]
+   11 00000010         
+   12 00000010 00004242 
+                       value   DCD              &4242
+   13 00000014 40000000 
+                       result  DCD              &40000000
+   14 00000018         
+   15 00000018                 END
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
+bjects\leftshift.d -o.\objects\leftshift.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_
+v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\INC\Philips --predefine="__EVAL SETA 1" -
+-predefine="__UVISION_VERSION SETA 529" --list=.\listings\leftshift.lst leftshi
+ft.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MAIN 00000000
+
+Symbol: MAIN
+   Definitions
+      At line 6 in file leftshift.s
+   Uses
+      None
+Comment: MAIN unused
+program 00000000
+
+Symbol: program
+   Definitions
+      At line 3 in file leftshift.s
+   Uses
+      None
+Comment: program unused
+result 00000014
+
+Symbol: result
+   Definitions
+      At line 13 in file leftshift.s
+   Uses
+      At line 9 in file leftshift.s
+Comment: result used once
+value 00000010
+
+Symbol: value
+   Definitions
+      At line 12 in file leftshift.s
+   Uses
+      At line 7 in file leftshift.s
+Comment: value used once
+4 symbols
+336 symbols in table
